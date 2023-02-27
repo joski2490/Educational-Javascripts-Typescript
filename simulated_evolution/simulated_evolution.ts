@@ -22,21 +22,21 @@ class SimulatedEvolution {
     private cell_height : number; 
 
     // Other simulation parameters
-    private food_spawn_per_tick : number = 2;      // spawn that many new algea per simulation tick
-    private energy_per_food : number = 40;         // If microbes eat increase energy by that amount
+    private food_spawn_per_tick : number = 5;      // spawn that many new algea per simulation tick
+    private energy_per_food : number = 80;         // If microbes eat increase energy by that amount
     private energy_max : number = 1500;	           // Microbes stop eating once they reach this energy value
-    private energy_to_reproduce : number = 1000;   // This amount of energy is necessary for reproduction
-    private initial_microbe_num : number = 10;
+    private energy_to_reproduce : number = 800;   // This amount of energy is necessary for reproduction
+    private initial_microbe_num : number = 5;
     private microbe_num : number = 0;
 
     // Microbe Motion Table. One Entry per Motion Direction
-    private motion_tab : any = [ [-1.0,  1.0], [0.0,  1.0], [1.0,  1.0],
-                                 [-1.0,  0.0],              [1.0,  0.0],
-                                 [-1.0, -1.0], [0.0, -1.0], [1.0, -1.0] ];
+    private motion_tab : any = [ [-0.5,  0.5], [0.0,  0.5], [0.50,  0.50],
+                                 [-0.50,  0.0],              [0.50,  0.0],
+                                 [-0.50, -0.50], [0.0, -0.50], [0.50, -0.50] ];
 
     // Ammount of energy subtracted from the microbe depending on the change in movement direction
     // (there is a price for taking hard turns)
-    private steering_cost : any = [ [0], [1], [2], [4], [8], [4], [2], [1] ];
+    private steering_cost : any = [ [0], [1], [1], [2], [4], [2], [1], [1] ];
 
     // data arrays
     private imgfood : any;
@@ -84,7 +84,7 @@ class SimulatedEvolution {
         }
 
         // initialize food
-        for (var i=1; i < 40000; ++i) {
+        for (var i=1; i < 80000; ++i) {
             this.put_food(Math.round(Math.random() * this.cells_x), 
                           Math.round(Math.random() * this.cells_y));
         }
@@ -144,8 +144,8 @@ class SimulatedEvolution {
             }
         }
 
-        var w = this.cells_x/8;
-        var h = this.cells_y/8;
+        var w = this.cells_x/4;
+        var h = this.cells_y/4;
         for (var i=0; i < this.food_spawn_per_tick; ++i) {
             var x = cx + Math.floor(Math.random() * w - w/2);
             var y = cy + Math.floor(Math.random() * h - h/2);
