@@ -12,9 +12,9 @@ var SimulatedEvolution = /** @class */ (function () {
         this.initial_microbe_num = 10;
         this.microbe_num = 0;
         // Microbe Motion Table. One Entry per Motion Direction
-        this.motion_tab = [[-1.0, 1.0], [0.0, 1.0], [1.0, 1.0],
-            [-1.0, 0.0], [1.0, 0.0],
-            [-1.0, -1.0], [0.0, -1.0], [1.0, -1.0]];
+        this.motion_tab = [[-Math.random(), Math.random()], [0.0, Math.random()], [Math.random(), Math.random()],
+            [-Math.random(), 0.0], [Math.random(), 0.0],
+            [-Math.random(), -Math.random()], [0.0, -Math.random()], [Math.random(), -Math.random()]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
         this.steering_cost = [[0], [1], [2], [4], [8], [4], [2], [1]];
@@ -92,7 +92,7 @@ var SimulatedEvolution = /** @class */ (function () {
         for (var i = 0; i < this.food_spawn_per_tick / 4; ++i) {
             var x = Math.floor(Math.random() * this.cells_x);
             var y = Math.floor(Math.random() * this.cells_y);
-            if (Math.abs(cx - x) > 100 || Math.abs(cy - y) > 100) {
+            if (Math.abs(cx - x) > 400 || Math.abs(cy - y) > 400) {
                 this.put_food(x, y);
             }
         }
