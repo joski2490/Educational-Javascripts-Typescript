@@ -5,11 +5,11 @@ var SimulatedEvolution = /** @class */ (function () {
         this.colBack = "rgb(0,0,0)";
         this.colFood = "rgb(0,0,0)";
         // Other simulation parameters
-        this.food_spawn_per_tick = 2; // spawn that many new algea per simulation tick
-        this.energy_per_food = 40; // If microbes eat increase energy by that amount
+        this.food_spawn_per_tick = 20; // spawn that many new algea per simulation tick
+        this.energy_per_food = 200; // If microbes eat increase energy by that amount
         this.energy_max = 1500; // Microbes stop eating once they reach this energy value
-        this.energy_to_reproduce = 1000; // This amount of energy is necessary for reproduction
-        this.initial_microbe_num = 10;
+        this.energy_to_reproduce = 500; // This amount of energy is necessary for reproduction
+        this.initial_microbe_num = 50;
         this.microbe_num = 0;
         // Microbe Motion Table. One Entry per Motion Direction
         this.motion_tab = [[-Math.random(), Math.random()], [0.0, Math.random()], [Math.random(), Math.random()],
@@ -17,7 +17,7 @@ var SimulatedEvolution = /** @class */ (function () {
             [-Math.random(), -Math.random()], [0.0, -Math.random()], [Math.random(), -Math.random()]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
-        this.steering_cost = [[0], [1], [2], [4], [8], [4], [2], [1]];
+        this.steering_cost = [[0], [0], [1], [2], [4], [2], [1], [0]];
         // Copy simulation parameters
         this.food_spawn_per_tick = cfg.food_spawn_per_tick;
         this.energy_per_food = cfg.energy_per_food;
@@ -87,8 +87,8 @@ var SimulatedEvolution = /** @class */ (function () {
         }
     };
     SimulatedEvolution.prototype.spawn_food_box = function () {
-        var cx = this.cells_x / 2;
-        var cy = this.cells_y / 2;
+        var cx = this.cells_x;
+        var cy = this.cells_y;
         for (var i = 0; i < this.food_spawn_per_tick / 4; ++i) {
             var x = Math.floor(Math.random() * this.cells_x);
             var y = Math.floor(Math.random() * this.cells_y);
