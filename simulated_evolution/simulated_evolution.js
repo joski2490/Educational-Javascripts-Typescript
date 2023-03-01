@@ -150,7 +150,7 @@ var SimulatedEvolution = /** @class */ (function () {
             var m = {
                 x: Math.floor(Math.random() * this.cells_x),
                 y: Math.floor(Math.random() * this.cells_y),
-                dir: Math.floor(Math.random() * 16),
+                dir: Math.floor(Math.random() * 4),
                 energy: this.microbe_num + 100,
                 age: 0,
                 genes: this.create_random_genes(),
@@ -166,7 +166,7 @@ var SimulatedEvolution = /** @class */ (function () {
             var m = {
                 x: parent.x,
                 y: parent.y,
-                dir: Math.floor(Math.random() * 16),
+                dir: Math.floor(Math.random() * 4),
                 energy: parent.energy / 2,
                 age: 0,
                 genes: new_genes,
