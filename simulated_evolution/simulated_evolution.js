@@ -12,12 +12,14 @@ var SimulatedEvolution = /** @class */ (function () {
         this.initial_microbe_num = 50;
         this.microbe_num = 0;
         // Microbe Motion Table. One Entry per Motion Direction
-        this.motion_tab = [[-1*Math.random(), Math.random()], [0.0, Math.random()], [Math.random(), Math.random()],
-            [-1*Math.random(), 0.0], [Math.random(), 0.0],
-            [-1*Math.random(), -1*Math.random()], [0.0, -1*Math.random()], [Math.random(), -1*Math.random()]];
+        this.motion_tab = [[-1.0, 1.0], [-0.5, 1.0], [0.0, 1.0], [0.5, 1.0], [1.0, 1.0],
+                           [-1.0, 0.5],                                      [1.0, 0.5],
+                           [-1.0, 0.0],              [0.0, 0.0],             [1.0, 0.0],
+                           [-1.0, -0.5],                                     [1.0, -0.5],
+                           [-1.0, -1.0], [-0.5, -1.0], [0.0, -1.0], [0.5, -1.0], [1.0, -1.0]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
-        this.steering_cost = [[0], [1], [2], [4], [4], [2], [1], [0]];
+        this.steering_cost = [[2], [1], [0], [1], [2], [1], [0], [8], [0], [1], [1], [2], [1], [0], [1], [2]];
         // Copy simulation parameters
         this.food_spawn_per_tick = cfg.food_spawn_per_tick;
         this.energy_per_food = cfg.energy_per_food;
@@ -92,12 +94,12 @@ var SimulatedEvolution = /** @class */ (function () {
         for (var i = 0; i < this.food_spawn_per_tick / 4; ++i) {
             var x = Math.floor(Math.random() * this.cells_x);
             var y = Math.floor(Math.random() * this.cells_y);
-            if (Math.abs(cx - x) > 400 || Math.abs(cy - y) > 400) {
+            if (Math.abs(cx - x) > 50 || Math.abs(cy - y) > 50) {
                 this.put_food(x, y);
             }
         }
-        var w = this.cells_x / 8;
-        var h = this.cells_y / 8;
+        var w = this.cells_x / 2;
+        var h = this.cells_y / 2;
         for (var i = 0; i < this.food_spawn_per_tick; ++i) {
             var x = cx + Math.floor(Math.random() * w - w / 2);
             var y = cy + Math.floor(Math.random() * h - h / 2);
@@ -148,8 +150,8 @@ var SimulatedEvolution = /** @class */ (function () {
             var m = {
                 x: Math.floor(Math.random() * this.cells_x),
                 y: Math.floor(Math.random() * this.cells_y),
-                dir: Math.floor(Math.random() * 8),
-                energy: this.microbe_num + 100,
+                dir: Math.floor(Math.random() * 17),
+                energy: this.microbe_num + 200,
                 age: 0,
                 genes: this.create_random_genes(),
                 next: this.microbe_first,
