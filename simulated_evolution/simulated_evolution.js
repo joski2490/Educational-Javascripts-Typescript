@@ -19,7 +19,7 @@ var SimulatedEvolution = /** @class */ (function () {
                            [-1.0, -1.0], [-0.5, -1.0], [0.0, -1.0], [0.5, -1.0], [1.0, -1.0]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
-        this.steering_cost = [[2], [1], [0], [1], [2], [1], [0], [8], [0], [1], [1], [2], [1], [0], [1], [2]];
+        this.steering_cost = [[0], [0], [1], [2], [4], [6], [8], [16], [8], [6], [4], [2], [1], [0], [0]];
         // Copy simulation parameters
         this.food_spawn_per_tick = cfg.food_spawn_per_tick;
         this.energy_per_food = cfg.energy_per_food;
@@ -53,7 +53,7 @@ var SimulatedEvolution = /** @class */ (function () {
             this.put_food(Math.round(Math.random() * this.cells_x), Math.round(Math.random() * this.cells_y));
         }
         // start the timer
-        window.setInterval(this.tick.bind(this), 3);
+        window.setInterval(this.tick.bind(this), 2);
     }
     SimulatedEvolution.prototype.put_food = function (x, y) {
         this.food[y * this.cells_x + x] = 1;
@@ -166,7 +166,7 @@ var SimulatedEvolution = /** @class */ (function () {
             var m = {
                 x: parent.x,
                 y: parent.y,
-                dir: Math.floor(Math.random() * 8),
+                dir: Math.floor(Math.random() * 16),
                 energy: parent.energy / 2,
                 age: 0,
                 genes: new_genes,
