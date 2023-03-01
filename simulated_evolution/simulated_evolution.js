@@ -19,7 +19,7 @@ var SimulatedEvolution = /** @class */ (function () {
                            [-1.0, -1.0], [-0.5, -1.0], [0.0, -1.0], [0.5, -1.0], [1.0, -1.0]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
-        this.steering_cost = [[0], [0], [1], [1], [2], [2], [4], [6], [4], [2], [2], [1], [1], [0], [0]];
+        this.steering_cost = [[6], [4], [2], [2], [1], [1], [0], [0], [0], [1], [1], [2], [2], [4], [6]];
         // Copy simulation parameters
         this.food_spawn_per_tick = cfg.food_spawn_per_tick;
         this.energy_per_food = cfg.energy_per_food;
