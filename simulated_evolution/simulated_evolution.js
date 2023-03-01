@@ -14,7 +14,7 @@ var SimulatedEvolution = /** @class */ (function () {
         // Microbe Motion Table. One Entry per Motion Direction
         this.motion_tab = [[-1.0, 1.0], [-0.5, 1.0], [0.0, 1.0], [0.5, 1.0], [1.0, 1.0],
                            [-1.0, 0.5],                                      [1.0, 0.5],
-                           [-1.0, 0.0],              [0.0, 0.0],             [1.0, 0.0],
+                           [-1.0, 0.0],                                      [1.0, 0.0],
                            [-1.0, -0.5],                                     [1.0, -0.5],
                            [-1.0, -1.0], [-0.5, -1.0], [0.0, -1.0], [0.5, -1.0], [1.0, -1.0]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
