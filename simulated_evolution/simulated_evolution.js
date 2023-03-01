@@ -12,12 +12,12 @@ var SimulatedEvolution = /** @class */ (function () {
         this.initial_microbe_num = 50;
         this.microbe_num = 0;
         // Microbe Motion Table. One Entry per Motion Direction
-        this.motion_tab = [[-Math.random(), Math.random()], [0.0, Math.random()], [Math.random(), Math.random()],
-            [-Math.random(), 0.0], [Math.random(), 0.0],
-            [-Math.random(), -Math.random()], [0.0, -Math.random()], [Math.random(), -Math.random()]];
+        this.motion_tab = [[-1*Math.random(), Math.random()], [0.0, Math.random()], [Math.random(), Math.random()],
+            [-1*Math.random(), 0.0], [Math.random(), 0.0],
+            [-1*Math.random(), -1*Math.random()], [0.0, -1*Math.random()], [Math.random(), -1*Math.random()]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
-        this.steering_cost = [[0], [0], [1], [2], [4], [2], [1], [0]];
+        this.steering_cost = [[0], [1], [2], [4], [4], [2], [1], [0]];
         // Copy simulation parameters
         this.food_spawn_per_tick = cfg.food_spawn_per_tick;
         this.energy_per_food = cfg.energy_per_food;
@@ -51,7 +51,7 @@ var SimulatedEvolution = /** @class */ (function () {
             this.put_food(Math.round(Math.random() * this.cells_x), Math.round(Math.random() * this.cells_y));
         }
         // start the timer
-        window.setInterval(this.tick.bind(this), 2);
+        window.setInterval(this.tick.bind(this), 3);
     }
     SimulatedEvolution.prototype.put_food = function (x, y) {
         this.food[y * this.cells_x + x] = 1;
