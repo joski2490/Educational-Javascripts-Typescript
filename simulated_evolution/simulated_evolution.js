@@ -12,11 +12,11 @@ var SimulatedEvolution = /** @class */ (function () {
         this.initial_microbe_num = 5;
         this.microbe_num = 0;
         // Microbe Motion Table. One Entry per Motion Direction
-        this.motion_tab = [[-1.0, 1.0], [-0.5, 1.0], [0.0, 1.0], [0.5, 1.0], [1.0, 1.0],
-                           [-1.0, 0.5],                                      [1.0, 0.5],
-                           [-1.0, 0.0],                                      [1.0, 0.0],
-                           [-1.0, -0.5],                                     [1.0, -0.5],
-                           [-1.0, -1.0], [-0.5, -1.0], [0.0, -1.0], [0.5, -1.0], [1.0, -1.0]];
+        this.motion_tab = [[-2.0, 2.0], [-1.0, 2.0], [0.0, 2.0], [1.0, 2.0], [2.0, 2.0],
+                           [-2.0, 1.0],                                      [2.0, 1.0],
+                           [-2.0, 0.0],                                      [2.0, 0.0],
+                           [-2.0, -1.0],                                     [2.0, -1.0],
+                           [-2.0, -2.0], [-1.0, -2.0], [0.0, -2.0], [1.0, -2.0], [2.0, -2.0]];
         // Ammount of energy subtracted from the microbe depending on the change in movement direction
         // (there is a price for taking hard turns)
         this.steering_cost = [[6], [4], [2], [2], [1], [1], [0], [0], [0], [1], [1], [2], [2], [4], [6]];
