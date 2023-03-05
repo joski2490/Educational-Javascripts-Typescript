@@ -30,9 +30,11 @@ class SimulatedEvolution {
     private microbe_num : number = 0;
 
     // Microbe Motion Table. One Entry per Motion Direction
-    private motion_tab : any = [ [-Math.random()*10,  Math.random()*10], [0.0,  Math.random()*10], [Math.random()*10,  Math.random()*10],
-                                 [-Math.random()*10,  0.0],              [Math.random()*10,  0.0],
-                                 [-Math.random()*10, -Math.random()*10], [0.0, -Math.random()*10], [Math.random()*10, -Math.random()*10] ];
+    private motion_tab : any = [ [-1.0, 1.0], [-0.5, 1.0], [0.0, 1.0], [0.5, 1.0], [1.0, 1.0],
+                                 [-1.0,  0.5],                                    [1.0,  0.5],
+                                 [-1.0, 0.0],                                      [1.0, 0.0],
+                                 [-1.0, -0.5],                                     [1.0, -0.5],
+                                 [-1.0, -1.0], [-0.5, -1.0], [0.0, -1.0], [0.5, -1.0], [1.0, -1.0] ];
 
     // Ammount of energy subtracted from the microbe depending on the change in movement direction
     // (there is a price for taking hard turns)
