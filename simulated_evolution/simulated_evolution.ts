@@ -36,7 +36,7 @@ class SimulatedEvolution {
 
     // Ammount of energy subtracted from the microbe depending on the change in movement direction
     // (there is a price for taking hard turns)
-    private steering_cost : any = [ [0], [0], [0], [1], [2], [1], [0], [0] ];
+    private steering_cost : any = [ [8], [6], [4], [2], [2], [4], [6], [8] ];
 
     // data arrays
     private imgfood : any;
